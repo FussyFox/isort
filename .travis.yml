@@ -1,0 +1,27 @@
+services:
+- docker
+sudo: true
+language: python
+python:
+- '3.6'
+jobs:
+  include:
+  - stage: deploy
+    script: "./build_with_docker.sh"
+    deploy:
+      provider: lambda
+      edge: true
+      skip_cleanup: true
+      function_name: lambdalint_isort
+      region: eu-west-1
+      role: arn:aws:iam::327092303989:role/lambda-lint_lambda_function
+      runtime: python3.6
+      module_name: main
+      handler_name: handle
+      timeout: 300
+      dot_match: true
+      access_key_id: AKIAJTUSZCFJO2PNDFHQ
+      secret_access_key:
+        secure: "aV/LCCOTsR5s6tK+f2ui+aqZb/4/vuNRCEQ4jV/LLNZ5SPESSucRraUXLom1dqSUiLGqJ+BomTQT3WCcgVevd7GmAgwT6um7WIIwoVov1F0vZBSZsmeb09gPO8+30HQtJCIwBofc0wh/5LTOURWEfil94fQIk9zXOmZ5HHLTPG4N3Sdb1OJL9KxdqL4L1dIPqkW2or5SV89M16P+sGuaZ2j4oA6xAIczTv11B9VIYSmrD4z6aFF8wBMeWeQ1Z1DH+wlc4C6QV+fvTQA9Lt9s494EEctFVXWk8A/USuQSOdtml6lv859vyzj2MDMS7FPGIUtT4Wqpsu7H9FZ1OfWuNgpN1JSN49jEayyXBFSBy8svrKbphG00CQF/HXHNhBtimOutfHH02l+fUYKmaG5kv8pDvJeFLkE7gQstRAF6YiHmcsEhStvg+FePGAYdsHIvfkl8KmtOz1UHYF/5C3wCL3XdCCr4+gt+E6VG1g7V8s3rT//NKnwSzvtwSgbruUOcH6FyYn9WewzPW3mlH0fz24igZhsJY7UkOZdQK7fjus7lqEcdnm7H5fhrnB+rBFTXTNOu6yPSy0xykb+gVLeNCkYxCi/SVHhAAvez1N4pNzIhmAeIMPZC0nV9F23PCbVKGkCZr6KogDURbBJ04GQ3ViUdZlUu0i5lA6/zO6vrWO8="
+      on:
+        repo: FussyFox/isort
