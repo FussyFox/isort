@@ -10,5 +10,5 @@ root_logger.addHandler(logging.StreamHandler(sys.stdout))
 
 handle = CheckRun.as_handler(
     'isort',
-    'isort', '--check-only', '--recursive', '.'
+    'isort', '--check-only', '--diff', '--recursive', '.'
 )
