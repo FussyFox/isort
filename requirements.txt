@@ -1,2 +1,2 @@
-lintipy==1.1.0
+lintipy==1.2.2
 isort[requirements,pipfile]==4.3.16
