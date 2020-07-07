@@ -4,5 +4,5 @@ from lintipy import CheckRun
 
 handle = CheckRun.as_handler(
     'isort',
-    'isort', '--check-only', '--diff', '--recursive', '.'
+    'isort', '--check-only', '--diff', '.'
 )
