@@ -1,2 +1,2 @@
 lintipy==1.4.0
-isort[requirements,pipfile]==5.0.5
+isort[requirements,pipfile]==5.0.7
